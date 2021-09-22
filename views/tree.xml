@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_tree" model="ir.ui.view">
+        <field name="name">Tree_For_Model</field>
+        <field name="model">wow.player</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nickname"/>
+                <field name="region"/>
+                <field name="account_id"/>
+                <field name="max_aircraft_damage"/>
+                <field name="max_ground_objects_damage"/>
+                <field name="score"/>
+                <field name="wins"/>
+                <field name="losses"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

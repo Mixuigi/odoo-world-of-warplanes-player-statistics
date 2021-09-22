@@ -1,0 +1,13 @@
+<odoo>
+<record id="view_game_graph" model="ir.ui.view">
+    <field name="name">person.graph</field>
+    <field name="model">wow.player</field>
+    <field name="arch" type="xml">
+        <graph string="Game Graph" type="pie">
+            <field name="nickname" type="pie"/>
+            <field name="region" />
+
+        </graph>
+    </field>
+</record>
+</odoo>

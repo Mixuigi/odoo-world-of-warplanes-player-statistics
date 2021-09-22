@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_search" model="ir.ui.view">
+        <field name="name">Groups</field>
+        <field name="model">wow.player</field>
+        <field name="arch" type="xml">
+            <search string="Region">
+                <separator/>
+                <field name="region"/>
+                <field name="score"/>
+                <field name="wins"/>
+                <field name="losses"/>
+                <filter string="Score" name="score" context="{'group_by': 'score'}"/>
+                <filter string="Regions" name="region" context="{'group_by': 'region'}"/>
+                <filter string="Losses" name="losses" context="{'group_by': 'losses'}"/>
+                <filter string="Wins" name="wins" context="{'group_by': 'wins'}"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="user_action" model="ir.actions.act_window">
+        <field name="name">Statistics</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wow.player</field>
+        <field name="view_mode">tree,kanban,form,graph</field>
+        <field name="search_view_id" ref="view_search"/>
+
+    </record>
+
+    <menuitem id="game_root"
+              name="User"
+              action="user_action"
+              sequence="10"/>
+
+    <record id="update_players" model="ir.actions.server">
+        <field name="name">Add a Bank Account</field>
+        <field name="model_id" ref="model_wow_player"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.create_data()
+        </field>
+    </record>
+
+    <menuitem id="statistics_root"
+              name="Update Players"
+              parent="game_root"
+              action="update_players"
+              sequence="10"/>
+
+</odoo>
